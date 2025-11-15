@@ -50,8 +50,6 @@ The analysis was conducted in RStudio IDE (RStudio 2025.05.0+496 "Mariposa Orchi
     -   Pathology characteristics (diagnosis)
 
     -   Patient reported outcomes
-    
-    
 
 ## Preparation
 
@@ -697,7 +695,6 @@ concatenate_cumulative <- function(SequenceRow, ProductCuml, Term2) {
 
 ```
 
-
 # Title and abstract
 
 <!--# Indicate the study’s design with a commonly used term in the title or the abstract. Provide in the abstract an informative and balanced summary of what was done and what was found -->
@@ -707,7 +704,6 @@ The following working title is proposed;
 ::: {#workingtitle style="color: gray"}
 Recovery of pain and function following surgical treatment foot and ankle pathology: A cohort analysis of the SOFARI Registry
 :::
-
 
 ## Abstract
 
@@ -743,10 +739,6 @@ No data linkage to another data was performed for this analysis.
 
 <!--# Explain the scientific background and rationale for the investigation being reported -->
 
-
-
-
-
 ## RECORD \[3\] Objectives
 
 <!--# State specific objectives, including any prespecified hypotheses -->
@@ -754,19 +746,13 @@ No data linkage to another data was performed for this analysis.
 PICOS question format
 
 ::: {#tbl-questions}
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Component    | Question 1                                                                                                                           | Question 2                                                                                                                           |
-+==============+======================================================================================================================================+======================================================================================================================================+
-| Population   | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW |
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Intervention | with pathology affecting a specific region of the foot or ankle                                                                      | with any form of arthritis identified in the diagnosis derived from clinical notes                                                   |
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Comparator   | compared to pathology affecting other regions of the foot and ankle                                                                  | compared to those that do not                                                                                                        |
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Outcome      | how do the FAOS subscales differ?                                                                                                    | how do the FAOS subscales differ?                                                                                                    |
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
-| Study Design | Cross-sectional analysis of a multi-site clinical quality registry                                                                   | Cross-sectional analysis of a multi-site clinical quality registry                                                                   |
-+--------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Component | Question 1 | Question 2 |
+|----|----|----|
+| Population | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW |
+| Intervention | with pathology affecting a specific region of the foot or ankle | with any form of arthritis identified in the diagnosis derived from clinical notes |
+| Comparator | compared to pathology affecting other regions of the foot and ankle | compared to those that do not |
+| Outcome | how do the FAOS subscales differ? | how do the FAOS subscales differ? |
+| Study Design | Cross-sectional analysis of a multi-site clinical quality registry | Cross-sectional analysis of a multi-site clinical quality registry |
 
 Analysis questions presented in PICOS format
 :::
@@ -797,7 +783,6 @@ The hypotheses presented in @tbl-hypotheses posit that the variables of interest
 <!--# Present key elements of study design early in the paper -->
 
 Cross-sectional analysis of registry data.
-
 
 ## RECORD \[5\] Setting
 
@@ -908,7 +893,6 @@ rm(PatientTable1,
   PatientTable2
 )
 ```
-
 
 Read in complication tables, then combine and clean the text description of complications as required.
 
@@ -1042,8 +1026,6 @@ unlink(temp_file)
 
 ```
 
-
-
 ## RECORD \[6\] Participants
 
 <!--# (a) Cohort study—Give the eligibility criteria, and the sources and methods of selection of participants. Describe methods of follow-up -->
@@ -1072,9 +1054,7 @@ Record selection was based on the following criteria;
 
 -   The diagnosis includes ankle osteoarthritis
 
-
 <!--# (a) Going to need to have one list for strobe flow and another to run the impuation from -->
-
 
 ### Record \[6.2\] Algorithm validation
 
@@ -1746,8 +1726,6 @@ MasterTable6 <- MasterTable5 |> left_join(
 
 <!--# RECORD 7.1: A complete list of codes and algorithms used to classify exposures, outcomes, confounders, and effect modifiers should be provided. If these cannot be reported, an explanation should be provided -->
 
-
-
 ### RECORD \[7.1\] Codes and Algorithms
 
 <!--# RECORD 7.1: A complete list of codes and algorithms used to classify exposures, outcomes, confounders, and effect modifiers should be provided. If these cannot be reported, an explanation should be provided -->
@@ -1759,25 +1737,15 @@ MasterTable6 <- MasterTable5 |> left_join(
 For a discussion of biases in the context of the clinical registry utilised for this analysis, refer to [@scholes2023]. Specific to this analysis, the following considerations are noted below.
 
 ::: {#tbl-bias}
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Bias              | Definition                                                                                                   | Source                    | Mitigation                                                                                                                                                                                    |
-+===================+==============================================================================================================+===========================+===============================================================================================================================================================================================+
-| Selection         |                                                                                                              |                           |                                                                                                                                                                                               |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Misclassification | Treatment record labelled into incorrect cohort.                              | [@Benchimol2015]          | Clinical text retrieved by two experienced reviewers and transferred to registry.                                                                                                             |
-|                   |                                                                                                              |                           |                                                                                                                                                                                               |
-|                   |                                                                                                              |                           | Code functions used to process text in a repeatable workflow.                                                                                                                                 |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Immortal Time     | Individuals meet eligibility criteria that can only assessed after followup has started                      | [@nguyen2021]             | Patients are enrolled at first presentation to the registry for their condition - but this does not necessarily represent first presentation to the clinic.                                   |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Missing Data      | The absence of a data value where a treatment record is eligible to have a data value collected              | [@carroll2020]            | Multiple imputation was used to impute missing values and model-based predictions of outcomes used                                                                                            |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Prevalent User    | Follow-up starts after eligible individuals have started the treatment. The follow-up time is left-truncated | [@nguyen2021]             | Eligibility and enrollment is performed prior to treatment offering for any patient or new presentation. Records where definitive treatment occurred before registry enrolment were excluded. |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Pseudoreplication | Analyse data while ignoring dependency between observations. Inadequate model specification.                 | [@davies2015; @lazic2010] | Because not all patients had multiple treatments, mixed effects models were poorly specified. A generalised linear model was utilised instead.                                                |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Confounder        | A variable of interest and a target outcome simultaneously influenced by a third variable                   | [@tennant2020]            | PCS-SF models incorporated adjustment for confounders                                                                                                                                         |
-+-------------------+--------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Bias | Definition | Source | Mitigation |
+|----|----|----|----|
+| Selection |  |  |  |
+| Misclassification | Treatment record labelled into incorrect cohort. \| [@Benchimol2015] \| Clinical text retrieved by two experienced reviewers and transferred to registry. \| \| \| \| \| Code functions used to process text in a repeatable workflow. |  |  |
+| Immortal Time | Individuals meet eligibility criteria that can only assessed after followup has started | [@nguyen2021] | Patients are enrolled at first presentation to the registry for their condition - but this does not necessarily represent first presentation to the clinic. |
+| Missing Data | The absence of a data value where a treatment record is eligible to have a data value collected | [@carroll2020] | Multiple imputation was used to impute missing values and model-based predictions of outcomes used |
+| Prevalent User | Follow-up starts after eligible individuals have started the treatment. The follow-up time is left-truncated | [@nguyen2021] | Eligibility and enrollment is performed prior to treatment offering for any patient or new presentation. Records where definitive treatment occurred before registry enrolment were excluded. |
+| Pseudoreplication | Analyse data while ignoring dependency between observations. Inadequate model specification. | [@davies2015; @lazic2010] | Because not all patients had multiple treatments, mixed effects models were poorly specified. A generalised linear model was utilised instead. |
+| Confounder | A variable of interest and a target outcome simultaneously influenced by a third variable \| [@tennant2020] \| PCS-SF models incorporated adjustment for confounders \| |  |  |
 
 Biases in an analysis of an observational cohort retrieved from a clinical registry
 :::
@@ -1807,12 +1775,6 @@ No categorisation of quantitative variables was undertaken in this analysis.
 Set up input table for statistical analysis with only variables required for models.
 
 The *ggdag* package was used to create and visualise directed acyclic graphs (in conjunction with *ggplot2*), with minimal adjustment sets to ensure correct specification of models to estimate the effect of Group on outcome variables.
-
-
-
-
-
-
 
 ## RECORD \[14\] Patient Characteristics
 
