@@ -4,7 +4,7 @@ author: "Corey Scholes"
 affiliation: "EBM Analytics"
 version: 1.0
 date: "2025-September-07"
-date-modified: "2025-September-07"
+date-modified: "2025-November-19"
 type: website
 output-dir: docs
 editor: visual
@@ -22,7 +22,9 @@ format:
     code-fold: true
     
     
-bibliography: SOFARI_Followup.bib
+bibliography: 
+  - SOFARI_Followup.bib
+  - grateful-refs.bib
 ---
 
 ## Analysis Preamble
@@ -33,7 +35,7 @@ The following analysis has been drafted to provided all necessary information to
 
 The study was reported according to the RECORD guidelines [@Benchimol2015] and companion checklist.
 
-The analysis was conducted in RStudio IDE (RStudio 2025.05.0+496 "Mariposa Orchid" Release) using *Rbase*, *quarto* and attached packages to perform the following;
+The analysis was conducted in RStudio IDE (RStudio 2025.09.2+418 "Cucumberleaf Sunflower" Release) using *Rbase*, *quarto* (v1.5.17*)* and attached packages to perform the following;
 
 -   Data import and preparation
 
@@ -746,13 +748,19 @@ No data linkage to another data was performed for this analysis.
 PICOS question format
 
 ::: {#tbl-questions}
-| Component | Question 1 | Question 2 |
-|----|----|----|
-| Population | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW |
-| Intervention | with pathology affecting a specific region of the foot or ankle | with any form of arthritis identified in the diagnosis derived from clinical notes |
-| Comparator | compared to pathology affecting other regions of the foot and ankle | compared to those that do not |
-| Outcome | how do the FAOS subscales differ? | how do the FAOS subscales differ? |
-| Study Design | Cross-sectional analysis of a multi-site clinical quality registry | Cross-sectional analysis of a multi-site clinical quality registry |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Component             | Question 1                                                                                                                           | Question 2                                                                                                                           |
++=======================+======================================================================================================================================+======================================================================================================================================+
+| Population            | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW | In patients presenting for orthopaedic surgical review of ankle or foot pathology to one of four private clinics in metropolitan NSW |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Intervention          | with pathology affecting a specific region of the foot or ankle                                                                      | with any form of arthritis identified in the diagnosis derived from clinical notes                                                   |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Comparator            | compared to pathology affecting other regions of the foot and ankle                                                                  | compared to those that do not                                                                                                        |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Outcome               | how do the FAOS subscales differ?                                                                                                    | how do the FAOS subscales differ?                                                                                                    |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+| Study Design          | Cross-sectional analysis of a multi-site clinical quality registry                                                                   | Cross-sectional analysis of a multi-site clinical quality registry                                                                   |
++-----------------------+--------------------------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
 
 Analysis questions presented in PICOS format
 :::
@@ -1737,15 +1745,23 @@ MasterTable6 <- MasterTable5 |> left_join(
 For a discussion of biases in the context of the clinical registry utilised for this analysis, refer to [@scholes2023]. Specific to this analysis, the following considerations are noted below.
 
 ::: {#tbl-bias}
-| Bias | Definition | Source | Mitigation |
-|----|----|----|----|
-| Selection |  |  |  |
-| Misclassification | Treatment record labelled into incorrect cohort. \| [@Benchimol2015] \| Clinical text retrieved by two experienced reviewers and transferred to registry. \| \| \| \| \| Code functions used to process text in a repeatable workflow. |  |  |
-| Immortal Time | Individuals meet eligibility criteria that can only assessed after followup has started | [@nguyen2021] | Patients are enrolled at first presentation to the registry for their condition - but this does not necessarily represent first presentation to the clinic. |
-| Missing Data | The absence of a data value where a treatment record is eligible to have a data value collected | [@carroll2020] | Multiple imputation was used to impute missing values and model-based predictions of outcomes used |
-| Prevalent User | Follow-up starts after eligible individuals have started the treatment. The follow-up time is left-truncated | [@nguyen2021] | Eligibility and enrollment is performed prior to treatment offering for any patient or new presentation. Records where definitive treatment occurred before registry enrolment were excluded. |
-| Pseudoreplication | Analyse data while ignoring dependency between observations. Inadequate model specification. | [@davies2015; @lazic2010] | Because not all patients had multiple treatments, mixed effects models were poorly specified. A generalised linear model was utilised instead. |
-| Confounder | A variable of interest and a target outcome simultaneously influenced by a third variable \| [@tennant2020] \| PCS-SF models incorporated adjustment for confounders \| |  |  |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Bias              | Definition                                                                                                                                                                                                                             | Source                    | Mitigation                                                                                                                                                                                    |
++===================+========================================================================================================================================================================================================================================+===========================+===============================================================================================================================================================================================+
+| Selection         |                                                                                                                                                                                                                                        |                           |                                                                                                                                                                                               |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Misclassification | Treatment record labelled into incorrect cohort. \| [@Benchimol2015] \| Clinical text retrieved by two experienced reviewers and transferred to registry. \| \| \| \| \| Code functions used to process text in a repeatable workflow. |                           |                                                                                                                                                                                               |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Immortal Time     | Individuals meet eligibility criteria that can only assessed after followup has started                                                                                                                                                | [@nguyen2021]             | Patients are enrolled at first presentation to the registry for their condition - but this does not necessarily represent first presentation to the clinic.                                   |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Missing Data      | The absence of a data value where a treatment record is eligible to have a data value collected                                                                                                                                        | [@carroll2020]            | Multiple imputation was used to impute missing values and model-based predictions of outcomes used                                                                                            |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Prevalent User    | Follow-up starts after eligible individuals have started the treatment. The follow-up time is left-truncated                                                                                                                           | [@nguyen2021]             | Eligibility and enrollment is performed prior to treatment offering for any patient or new presentation. Records where definitive treatment occurred before registry enrolment were excluded. |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Pseudoreplication | Analyse data while ignoring dependency between observations. Inadequate model specification.                                                                                                                                           | [@davies2015; @lazic2010] | Because not all patients had multiple treatments, mixed effects models were poorly specified. A generalised linear model was utilised instead.                                                |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Confounder        | A variable of interest and a target outcome simultaneously influenced by a third variable \| [@tennant2020] \| PCS-SF models incorporated adjustment for confounders \|                                                                |                           |                                                                                                                                                                                               |
++-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Biases in an analysis of an observational cohort retrieved from a clinical registry
 :::
